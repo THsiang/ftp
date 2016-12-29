@@ -1,5 +1,6 @@
 FROM centos
 ENV container=docker
+RUN yum install -y initscripts
 RUN yum -y install openssl vsftpd && rm -rf /var/cache/yum/*
 
 RUN openssl req -x509 -nodes -days 7300\
@@ -22,6 +23,6 @@ RUN chmod 755 /etc/vsftpd/vsftpd.pem
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-EXPOSE 20 21 21100-21110
+EXPOSE 20 21 22 21100-21110
 
 ENTRYPOINT ["/start.sh"]
