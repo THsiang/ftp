@@ -1,5 +1,5 @@
 FROM centos
-
+ENV container=docker
 RUN yum -y install openssl vsftpd && rm -rf /var/cache/yum/*
 
 RUN openssl req -x509 -nodes -days 7300\
