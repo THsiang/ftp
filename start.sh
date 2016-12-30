@@ -7,6 +7,7 @@ if [ "$1" = 'ftp' ]; then
   echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp.conf
  fi
  exec /usr/sbin/vsftpd /etc/vsftp/vsftp.conf
+ exec /usr/sbin/sshd -D -e 
 fi
 
 if [ "$1" = 'ftps' ]; then
