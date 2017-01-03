@@ -17,8 +17,6 @@ if [ "$1" = 'ftp' ]; then
   echo "Activating passv on $PASV_ADDRESS"
   echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp.conf
  fi
- /usr/sbin/sshd -D -e &
- echo "Start sftp process"
  exec /usr/sbin/vsftpd /etc/vsftp/vsftp.conf
  
 fi
