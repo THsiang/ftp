@@ -1,5 +1,16 @@
 #!/bin/sh
 
+if [ "$1" = 'sftp' ]; then
+ echo "Launching vsftp on ftp protocol"
+ if [ -n "$PASV_ADDRESS" ]; then
+  echo "Activating passv on $PASV_ADDRESS"
+  echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp.conf
+ fi
+ exec /usr/sbin/sshd -D -e 
+ echo "Start sftp process"
+ 
+fi
+
 if [ "$1" = 'ftp' ]; then
  echo "Launching vsftp on ftp protocol"
  if [ -n "$PASV_ADDRESS" ]; then
