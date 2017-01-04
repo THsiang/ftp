@@ -1,5 +1,5 @@
 #!/bin/sh
-
+touch /var/log/vsftpd/vsftpd.log
 if [ "$1" = 'sftp' ]; then
  echo "Launching vsftp on ftp protocol"
  if [ -n "$PASV_ADDRESS" ]; then
@@ -17,8 +17,7 @@ if [ "$1" = 'ftp' ]; then
   echo "Activating passv on $PASV_ADDRESS"
   echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp.conf
  fi
- exec /usr/sbin/vsftpd /etc/vsftp/vsftp.conf
- 
+  /usr/sbin/vsftpd /etc/vsftp/vsftp.conf  
 fi
 
 if [ "$1" = 'ftps' ]; then
@@ -27,7 +26,7 @@ if [ "$1" = 'ftps' ]; then
   echo "Activating passv on $PASV_ADDRESS"
   echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp_ftps.conf
  fi
- exec /usr/sbin/vsftpd /etc/vsftp/vsftp_ftps.conf
+  /usr/sbin/vsftpd /etc/vsftp/vsftp_ftps.conf  
 fi
 
 if [ "$1" = 'ftps_implicit' ]; then
@@ -36,7 +35,7 @@ if [ "$1" = 'ftps_implicit' ]; then
   echo "Activating passv on $PASV_ADDRESS"
   echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp_ftps_implicit.conf
  fi
- exec /usr/sbin/vsftpd /etc/vsftp/vsftp_ftps_implicit.conf
+ /usr/sbin/vsftpd /etc/vsftp/vsftp_ftps_implicit.conf
 fi
 
 if [ "$1" = 'ftps_tls' ]; then
@@ -45,5 +44,6 @@ if [ "$1" = 'ftps_tls' ]; then
   echo "Activating passv on $PASV_ADDRESS"
   echo "pasv_address=$PASV_ADDRESS" >> /etc/vsftp/vsftp_ftps_tls.conf
  fi
- exec /usr/sbin/vsftpd /etc/vsftp/vsftp_ftps_tls.conf
+ /usr/sbin/vsftpd /etc/vsftp/vsftp_ftps_tls.conf
 fi
+exec tail -f /var/log/vsftpd/vsftpd.log
