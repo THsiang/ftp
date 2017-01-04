@@ -26,6 +26,6 @@ RUN chmod 755 /etc/vsftpd/vsftpd.pem
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
 
-EXPOSE 20 21 22 990 21100-21110
+EXPOSE 20 21 22 990 21100-21110 21200-21210 21300-21310 21400-21410
 
 ENTRYPOINT ["/start.sh"]
