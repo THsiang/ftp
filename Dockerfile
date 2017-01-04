@@ -3,9 +3,9 @@ ENV container=docker
 RUN yum install -y initscripts
 RUN yum -y install openssl vsftpd openssh-server && rm -rf /var/cache/yum/*
 
-RUN openssl req -x509 -nodes -days 7300\
-            -newkey rsa:2048 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem\
-            -subj "/C=FR/O=My company/CN=example.org"
+RUN openssl req -x509 -nodes -days 3650\
+            -newkey rsa:4096 -keyout /etc/vsftpd/vsftpd.pem -out /etc/vsftpd/vsftpd.pem\
+            -batch
 
 RUN  ssh-keygen -f "/etc/ssh/ssh_host_rsa_key" -N '' -t rsa &&\
      ssh-keygen -f "/etc/ssh/ssh_host_ecdsa_key" -N '' -t ecdsa &&\
