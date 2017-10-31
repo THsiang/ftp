@@ -20,7 +20,7 @@ COPY start.sh /
 RUN chmod +x /start.sh
 RUN mkdir -p /home/vsftpd/
 RUN chown -R ftp:ftp /home/vsftpd/
-RUN useradd -b /home/vsftpd -ms /bin/bash public && echo 'user:hsiang' | chpasswd
+RUN useradd -b /home/vsftpd -ms /bin/bash user && echo 'user:hsiang' | chpasswd
 RUN chmod 755 /etc/vsftpd/vsftpd.pem
 
 VOLUME /home/vsftpd
